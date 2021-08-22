@@ -28,24 +28,28 @@ export const addCategory = (form) => {
     return async dispatch => {
         dispatch({type: categoryConstants.ADD_NEW_CATEGORY_REQUEST});
         const res = await axiosInstance.post(`/category/create`, form);
-
-        if (res.status === 201) {
-            dispatch({
-                type: categoryConstants.ADD_NEW_CATEGORY_SUCCESS,
-                payload: {
-                    // category được thêm vào
-                    category: res.data.category
-                }
-            })
-        }
-
-        if (res.status === 400) {
-            dispatch({
-                type: categoryConstants.ADD_NEW_CATEGORY_FAILURE,
-                payload: res.data.error
-            })
-        }
-
+            if (res.status === 201) {
+                dispatch({
+                    type: categoryConstants.ADD_NEW_CATEGORY_SUCCESS,
+                    payload: {
+                        // category được thêm vào
+                        category: res.data.category
+                    }
+                })
+            }
+            
+            if (res.status === 400) {
+                dispatch({
+                    type: categoryConstants.ADD_NEW_CATEGORY_FAILURE,
+                    payload: res.data.error
+                })
+            }
+        // try {
+            
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        
     }
 }
 
@@ -55,9 +59,23 @@ export const updateCategories = (form) => {
 
         if (res.status === 201) {
             return true;
-            console.log(res);
         } else {
-            console.log(res);
+            return false;
+        }
+    }
+};
+
+export const deleteCategories = (ids) => {
+    return async dispatch => {
+        const res = await axiosInstance.post(`/category/delete`, {
+            payload: {
+                ids
+            }
+        });
+        if (res.status === 201) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

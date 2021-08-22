@@ -1,21 +1,20 @@
-import React from 'react'
-import {Jumbotron} from 'react-bootstrap'
-import Layout from '../../components/Layout'
+import React from 'react';
+import Layout from '../../components/Layout';
+import { Jumbotron, Row, Col, Container } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+
 /**
 * @author
 * @function Home
 **/
 
 const Home = (props) => {
-  
-  return(
-    <Layout sidebar>
-        <Jumbotron className="text-center">
-            <h1>Welcome to Admin Dashboard</h1>
-        </Jumbotron>
-    </Layout>
-   )
 
- }
+  return (
+    <Layout sidebar>
+    </Layout>
+  )
+
+}
 
 export default Home
