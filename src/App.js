@@ -13,12 +13,16 @@ import Orders from './containers/Orders';
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
+
+  // thêm input để khi auth.authenticate thay đổi thì useEffect() chạy
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-    dispatch(getInitialData());
-  }, [])
+    if (auth.authenticate) {
+      dispatch(getInitialData());
+    }
+  }, [auth.authenticate])
   return (
     <div className="App">
         <Switch>

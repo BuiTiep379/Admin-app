@@ -8,30 +8,31 @@ const AddCategoryModal = (props) => {
 
     const {
         show,
-        size,
         handleClose,
         modalTitle,
         categoryName,
         setCategoryName,
         parentCategoryId,
         setParentCategoryId,
+        categoryList,
         handleCategoryImage,
-        categoryList
+        onSubmit
     } = props;
 
     return (
-        <NewModal show={show}
-            size={size}
+        <NewModal
+            show={show}
             handleClose={handleClose}
-            modalTitle= {modalTitle}
-            onClick={handleClose}>
+            onSubmit={onSubmit}
+            modalTitle={modalTitle}
+        >
             <Row>
                 <Col>
                     <Input
                         value={categoryName}
                         placeholder={`Category Name`}
                         onChange={(e) => setCategoryName(e.target.value)}
-                        className="form-control-sm"
+                        className="form-control"
                     />
                 </Col>
                 <Col>
@@ -49,7 +50,7 @@ const AddCategoryModal = (props) => {
             </Row>
             <Row>
                 <Col>
-                    <input onChange={handleCategoryImage} style={{ "marginTop": "15px" }} className="form-control" type="file" name="categoryImage"/>
+                    <input onChange={handleCategoryImage} className="form-control" type="file" name="categoryImage"/>
                 </Col>
             </Row>
 

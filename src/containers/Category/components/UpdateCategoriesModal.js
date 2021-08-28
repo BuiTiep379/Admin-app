@@ -4,7 +4,7 @@ import NewModal from '../../../components/UI/Modal';
 import Input from '../../../components/UI/Input';
 
 
- const UpdateCategoriesModal = (props) => {
+const UpdateCategoriesModal = (props) => {
 
     const {
         size,
@@ -14,13 +14,15 @@ import Input from '../../../components/UI/Input';
         expandedArray,
         checkedArray,
         handleCategoryInput,
-        categoryList
+        categoryList,
+        onSubmit
     } = props;
     return (
-        <NewModal  
+        <NewModal
             show={show}
             handleClose={handleClose}
             modalTitle={modalTitle}
+            onSubmit={onSubmit}
             size={size}
         >
             <Row>
@@ -34,25 +36,30 @@ import Input from '../../../components/UI/Input';
                     <Row key={index}>
                         <Col>
                             <Input
-                                type="text"
-                                placeholder={`Category Name`}
                                 value={item.name}
+                                placeholder={`Category Name`}
                                 onChange={(e) => handleCategoryInput('name', e.target.value, index, 'expanded')}
-                            >
-                            </Input>
+                            />
                         </Col>
                         <Col>
-                            <select value={item.parentId} className="form-control" onChange={(e) => handleCategoryInput('parentId', e.target.value, index.target, 'expanded')}>
-                                <option selected>Select Category</option>
+                            <select
+                                className="form-control"
+                                value={item.parentId}
+                                onChange={(e) => handleCategoryInput('parentId', e.target.value, index, 'expanded')}>
+                                <option>select category</option>
                                 {
                                     categoryList.map(option =>
-                                        <option value={option.value}> {option.name} </option>
+                                        <option key={option.value} value={option.value}>{option.name}</option>
                                     )
                                 }
                             </select>
                         </Col>
                         <Col>
-                            <select className="form-control">
+                            <select
+                                className="form-control"
+                                value={item.type}
+                                onChange={(e) => handleCategoryInput('type', e.target.value, index, 'expanded')}
+                            >
                                 <option value="">Select Type</option>
                                 <option value="store">Store</option>
                                 <option value="product">Product</option>
@@ -73,25 +80,31 @@ import Input from '../../../components/UI/Input';
                     <Row key={index}>
                         <Col>
                             <Input
-                                type="text"
-                                placeholder={`Category Name`}
                                 value={item.name}
+                                placeholder={`Category Name`}
                                 onChange={(e) => handleCategoryInput('name', e.target.value, index, 'checked')}
-                            >
-                            </Input>
+                            />
                         </Col>
                         <Col>
-                            <select value={item.parentId} className="form-control" onChange={(e) => handleCategoryInput('parentId', e.target.value, index, 'checked')}>
-                                <option selected>Select Category</option>
+                            <select
+                                className="form-control"
+                                value={item.parentId}
+                                onChange={(e) => handleCategoryInput('parentId', e.target.value, index, 'checked')}>
+                                <option>select category</option>
                                 {
                                     categoryList.map(option =>
-                                        <option value={option.value}> {option.name} </option>
+                                        <option key={option.value} value={option.value}>{option.name}</option>
                                     )
                                 }
                             </select>
                         </Col>
                         <Col>
-                            <select className="form-control">
+                            <select
+                                className="form-control"
+                                value={item.type}
+                                onChange={(e) => handleCategoryInput('type', e.target.value, index, 'checked')}
+                            
+                            >
                                 <option value="">Select Type</option>
                                 <option value="store">Store</option>
                                 <option value="product">Product</option>
@@ -101,8 +114,6 @@ import Input from '../../../components/UI/Input';
                     </Row>
                 )
             }
-
-            {/* <input onChange={handleCategoryImage} style={{ "marginTop": "15px" }} className="form-control" type="file" name="categoryImage"></input> */}
         </NewModal>
     );
 }

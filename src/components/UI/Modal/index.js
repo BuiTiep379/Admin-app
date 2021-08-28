@@ -22,7 +22,7 @@ const NewModal = (props) => {
                             {btn.label}
                         </Button>
                     ): 
-                    <Button variant="primary" onClick={props.handleClose}>
+                    <Button variant="primary" onClick={props.onSubmit}>
                     Save Changes
                 </Button>
                 }
