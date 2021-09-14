@@ -169,8 +169,6 @@ const NewPage = (props) => {
   return (
     <Layout sidebar>
       {
-        page.loading ?
-        <p>Creating Page...Please!!!</p>:
           <>
             <Container>
               <Row>
